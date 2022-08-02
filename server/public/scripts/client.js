@@ -6,7 +6,7 @@ function readyNow() {
     $('#subtract').on('click', subtract);
     $('#multiply').on('click', multiply);
     $('#divide').on('click', divide);
-    $('#equals').on('click', equals);
+    $('#equals').on('click', getAnswer);
     $('#clear').on('click', clear);
 
 }
@@ -24,10 +24,10 @@ function sendMathToServer() {
             inputtwo: $('#numberinput-two').val(),
         }
     }).then(function (response){
+        // second ajax function goes here
         getAnswer()
         console.log('The answer is', answer);
         // append answer
-        // second ajax function goes here
     })
 }
 
@@ -42,10 +42,10 @@ function getAnswer (){
             let answer = response[i];
             console.log(answer);
             $('#history').append(`
-                <div id="answers">
-                    <li>
-                        ${answer.inputone} ${answer.modifier} ${answer.inputtwo} = ${answer.answer}
-                    </li>
+                <div>
+                    <ul>
+                    <li>${answer.inputone} ${answer.modifier} ${answer.inputtwo} = ${answer.answer}</li>
+                    </ul>
                 </div>
             `)
         }
@@ -71,11 +71,6 @@ function multiply() {
 function divide() {
     console.log('Divide');
     currentModifier = '/'
-}
-
-function equals() {
-    console.log('Equals');
-    currentModifier = '='
 }
 
 function clear() {
