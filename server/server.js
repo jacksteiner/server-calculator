@@ -22,13 +22,16 @@ app.post('/mathhistory', (req, res) => {
     console.log(mathproblem);
     if (req.body.modifier === '-' ){
         mathproblem.answer = req.body.inputone - req.body.inputtwo
-    } else if (req.body.modifer === '+') {
+    } else if (req.body.modifier === '+') {
         mathproblem.answer = Number(req.body.inputone) + Number(req.body.inputtwo)
     } else if (req.body.modifier === '*') {
         mathproblem.answer = req.body.inputone * req.body.inputtwo
-    } else if (req.body.modifer === '/') {
+    } else if (req.body.modifier === '/') {
         mathproblem.answer = req.body.inputone / req.body.inputtwo
+    } else {
+        console.error('operator not found');
     }
+
     mathhistory.push(mathproblem);
     res.send(mathproblem);
 })

@@ -8,6 +8,7 @@ function readyNow() {
     $('#divide').on('click', divide);
     $('#equals').on('click', sendMathToServer);
     $('#clear').on('click', clear);
+    getAnswer();
 
 }
 
@@ -38,6 +39,7 @@ function getAnswer (){
         url: '/mathhistory'
     }).then(function (response){
         console.log(response);
+        $('#history').empty();
         for (let i = 0; i < response.length; i++){
             let answer = response[i];
             console.log(answer);
