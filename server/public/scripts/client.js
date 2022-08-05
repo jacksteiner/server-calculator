@@ -6,7 +6,7 @@ function readyNow() {
     $('#subtract').on('click', subtract);
     $('#multiply').on('click', multiply);
     $('#divide').on('click', divide);
-    $('#equals').on('click', getAnswer);
+    $('#equals').on('click', sendMathToServer);
     $('#clear').on('click', clear);
 
 }

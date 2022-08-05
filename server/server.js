@@ -18,12 +18,19 @@ app.get('/mathhistory', (req, res) => {
 
 app.post('/mathhistory', (req, res) => {
     // res.send(mathhistory);
-    mathproblem = req.body;
+    let mathproblem = req.body;
     console.log(mathproblem);
     if (req.body.modifier === '-' ){
         mathproblem.answer = req.body.inputone - req.body.inputtwo
+    } else if (req.body.modifer === '+') {
+        mathproblem.answer = Number(req.body.inputone) + Number(req.body.inputtwo)
+    } else if (req.body.modifier === '*') {
+        mathproblem.answer = req.body.inputone * req.body.inputtwo
+    } else if (req.body.modifer === '/') {
+        mathproblem.answer = req.body.inputone / req.body.inputtwo
     }
     mathhistory.push(mathproblem);
+    res.send(mathproblem);
 })
 
 
